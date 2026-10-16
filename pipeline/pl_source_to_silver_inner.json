@@ -143,7 +143,7 @@
 				"typeProperties": {
 					"notebookPath": "/caresync-repo/caresynce-adb-repo/landing-to-Bronze",
 					"baseParameters": {
-						"source_sytem": {
+						"source_system": {
 							"value": "@activity('Read_table_details').output.firstRow.source_system",
 							"type": "Expression"
 						},
