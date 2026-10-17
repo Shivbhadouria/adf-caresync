@@ -48,6 +48,7 @@
 						"value": "@activity('read_source_table_list').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Ingest from source to silver",
@@ -158,7 +159,7 @@
 			},
 			"adf_run_id": {
 				"type": "string",
-				"defaultValue": "a2"
+				"defaultValue": "a5"
 			}
 		},
 		"variables": {
