@@ -1615,6 +1615,44 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_AzureKeyVault')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TGR_Caresync_Daily')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Pl_Master",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2026-10-18T16:11:00Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								5
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Pl_Master')]"
+			]
 		}
 	]
 }
