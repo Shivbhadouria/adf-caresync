@@ -1,7 +1,3 @@
-# CareSync Health Network — Data Platform
-
-## Architecture
-<img src="CareSync Data Platform Architecture.png">
 # 🏥 CareSync Health Network — End-to-End Data Engineering Platform
 
 **An end-to-end healthcare data engineering project built with Azure Data Factory, Azure Databricks, PySpark, Delta Lake, and a Medallion Architecture.**
