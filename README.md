@@ -6,6 +6,16 @@
   <img src="CareSync%20Data%20Platform%20Architecture.png" alt="CareSync Data Platform Architecture" width="100%">
 </p>
 
+Databricks Code Reference
+
+Reference repository: Databricks Data Engineering Repository
+https://github.com/Shivbhadouria/caresynce-adb-repo
+
+Purpose: Reference material for Databricks notebooks, data transformation patterns, and implementation guidance.
+
+Project adaptation: CareSync integrates the relevant concepts into its healthcare data platform, including the Medallion Architecture, Bronze/Silver/Gold processing, and analytics workflows.
+
+
 ## 📌 Project Overview
 
 CareSync Health Network is a hands-on data engineering project focused on building a scalable, metadata-driven data platform for healthcare analytics.
