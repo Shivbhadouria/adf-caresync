@@ -1,0 +1,12 @@
+{
+	"name": "adfcaresync-project",
+	"properties": {
+		"globalParameters": {
+			"email_receipent": {
+				"type": "string",
+				"value": "shivbhadouria66@gmail.com"
+			}
+		}
+	},
+	"location": "centralindia"
+}
