@@ -82,6 +82,35 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "SEND EMAIL",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SILVER TO GOLD",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_email_logic",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"adf_run_id": {
+							"value": "@pipeline().RunId",
+							"type": "Expression"
+						}
+					}
+				}
 			}
 		],
 		"annotations": []
