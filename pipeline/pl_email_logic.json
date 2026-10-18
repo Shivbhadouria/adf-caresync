@@ -99,7 +99,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select count(*) as count from ctrl.audit_log where adf_run_id = @{pipeline().parameters.adf_run_id} and status != 'SUCCESS'",
+							"value": "select count(*) as count from ctrl.audit_log where adf_run_id = '@{pipeline().parameters.adf_run_id}' and status!='SUCCESS'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -149,6 +149,40 @@
 					"variableName": "logic_app_body",
 					"value": {
 						"value": "{\n    \"subject\":\"@{variables('email_subject')}\",\n    \"email_receipents\":\"@{pipeline().globalParameters.email_receipent}\",\n    \"body_header\": \"@{variables('body_header')}\",\n    \"body_footer\":\"@{variables('body_footer')}\",\n    \"status_table\": @{activity('READ ALL TABLE STATUS').output.value}\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SEND EMAIL",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "PREPARE LOGIC APP BODY",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": {
+						"value": "@pipeline().globalParameters.logic_apps_url",
+						"type": "Expression"
+					},
+					"body": {
+						"value": "@variables('logic_app_body')",
 						"type": "Expression"
 					}
 				}
